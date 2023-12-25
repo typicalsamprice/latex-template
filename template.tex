@@ -1,0 +1,50 @@
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+%\usepackage{minted} % Programming typesetting
+
+% Font choice
+\usepackage{mathpazo}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\transpose}{^{T}}
+\newcommand{\conj}[1]{\mathop{\overline{#1}}}
+
+% Greek symbols
+\newcommand{\veps}{\varepsilon}
+\newcommand{\eps}{\epsilon}
+
+% Set-related stuff
+\newcommand{\set}[1]{\{\, #1 \,\}}
+\newcommand{\powerset}{\mathcal{P}}
+\newcommand{\union}{\cup}
+\newcommand{\intersect}{\cap}
+
+% Important sets/letters
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\Z}{\mathbf{Z}}
+
+% Paired stuff, starred is auto-sized
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\parens}{\lparen}{\rparen}
+
+%% Intervals
+\DeclarePairedDelimiter{\OpenInt}{\lparen}{\rparen}
+\DeclarePairedDelimiter{\ClosedInt}{[}{]}
+\DeclarePairedDelimiter{\OpenClosedInt}{\lparen}{]}
+\DeclarePairedDelimiter{\ClosedOpenInt}{[}{\rparen}
+
+% Logic symbols
+\newcommand{\lthen}{\rightarrow}
+\newcommand{\liff}{\leftrightarrow}
+\newcommand{\lxor}{\nleftrightarrow}
+
+% Numba theory
+\newcommand{\legendre}[2]{\parens*{\dfrac{#1}{#2}}}
