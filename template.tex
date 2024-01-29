@@ -5,7 +5,9 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
-%\usepackage{minted} % Programming typesetting
+\usepackage[margin=1in]{geometry}
+
+%\usepackage{minted} % Programming typesetting, can cause many issues
 
 % Font choice
 \usepackage{mathpazo}
@@ -23,6 +25,7 @@
 \newcommand{\powerset}{\mathcal{P}}
 \newcommand{\union}{\cup}
 \newcommand{\intersect}{\cap}
+\newcommand{\symdiff}{\operatorname{\vartriangle}}
 
 % Important sets/letters
 \newcommand{\N}{\mathbf{N}}
@@ -48,3 +51,8 @@
 
 % Numba theory
 \newcommand{\legendre}[2]{\parens*{\dfrac{#1}{#2}}}
+
+% Calc 3
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\cross}{\times}
