@@ -1,58 +1,132 @@
 \usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{xfrac}
+
+\usepackage[most]{tcolorbox}
+
+\usepackage{esvect}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=0.75in]{geometry}
+
+% Make the word "proof" match font for Theorem, etc.
+\expandafter\let\expandafter\oldproof\csname\string\proof\endcsname
+\let\oldendproof\endproof%
+\renewenvironment{proof}[1][\proofname]{%
+  \oldproof[\bfseries \upshape #1]%
+}{\oldendproof}
 
 %\usepackage{minted} % Programming typesetting, can cause many issues
 
 % Font choice
 \usepackage{mathpazo}
 
+\usepackage{bm}
+% References
+\usepackage{nameref}
+
 \newcommand{\inv}{^{-1}}
 \newcommand{\transpose}{^{T}}
 \newcommand{\conj}[1]{\mathop{\overline{#1}}}
+\newcommand{\comp}[1]{{#1}^{\complement}}
+
+\newcommand{\ds}{\displaystyle}
+
+% Theorems
+\newtheoremstyle{exstyle}
+  {}
+  {}
+  {}
+  {}
+  {}
+  {}
+  {\newline}
+  {\underline{\thmname{#1}\thmnumber{ #2}}: \thmnote{ #3}}
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}{Proposition}
+\newtheorem{defn}{Definition}
+\theoremstyle{exstyle}
+\newtheorem{ex}{Example}
+
+\newcommand{\sol}{\textbf{Solution}:}
 
 % Greek symbols
-\newcommand{\veps}{\varepsilon}
-\newcommand{\eps}{\epsilon}
+\newcommand{\veps}{\epsilon}
+\newcommand{\eps}{\varepsilon} % I like this more :)
 
 % Set-related stuff
-\newcommand{\set}[1]{\{\, #1 \,\}}
+\DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
 \newcommand{\powerset}{\mathcal{P}}
 \newcommand{\union}{\cup}
 \newcommand{\intersect}{\cap}
 \newcommand{\symdiff}{\operatorname{\vartriangle}}
 
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Ext}{Ext}
+
 % Important sets/letters
-\newcommand{\N}{\mathbf{N}}
-\newcommand{\R}{\mathbf{R}}
-\newcommand{\Q}{\mathbf{Q}}
-\newcommand{\C}{\mathbf{C}}
-\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\sA}{\mathcal{A}}
+\newcommand{\sC}{\mathcal{C}}
+\newcommand{\sF}{\mathcal{F}}
+\newcommand{\sI}{\mathcal{I}}
+\newcommand{\sJ}{\mathcal{J}}
+\newcommand{\sK}{\mathcal{K}}
+\newcommand{\sS}{\mathcal{S}}
+\newcommand{\sT}{\mathcal{T}}
+\newcommand{\sU}{\mathcal{U}}
+
+\renewcommand{\Re}{\mathfrak{Re}}
+\renewcommand{\Im}{\mathfrak{Im}}
+
+\newcommand{\cont}{\mathfrak{c}}
+
+\newcommand{\bk}{\bm{\kappa}}
 
 % Paired stuff, starred is auto-sized
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\innerprod}{\langle}{\rangle}
 \DeclarePairedDelimiter{\parens}{\lparen}{\rparen}
-
-%% Intervals
-\DeclarePairedDelimiter{\OpenInt}{\lparen}{\rparen}
-\DeclarePairedDelimiter{\ClosedInt}{[}{]}
-\DeclarePairedDelimiter{\OpenClosedInt}{\lparen}{]}
-\DeclarePairedDelimiter{\ClosedOpenInt}{[}{\rparen}
+\DeclarePairedDelimiter{\braces}{\lbrace}{\rbrace}
+\DeclarePairedDelimiter{\bracks}{\lbrack}{\rbrack}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 
 % Logic symbols
 \newcommand{\lthen}{\rightarrow}
 \newcommand{\liff}{\leftrightarrow}
 \newcommand{\lxor}{\nleftrightarrow}
 
+% f \from \N \to \N
+\newcommand{\from}{\colon}
+
 % Numba theory
-\newcommand{\legendre}[2]{\parens*{\dfrac{#1}{#2}}}
+%\newcommand{\legendre}[2]{\parens*{\dfrac{#1}{#2}}}
+%\newcommand{\p}{$p$\nobreakdash}
 
 % Calc 3
-\renewcommand{\vec}[1]{\mathbf{#1}}
-\newcommand{\norm}[1]{\|#1\|}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\veclit}{\langle}{\rangle}
+\renewcommand{\vec}[1]{\vv{#1}}
 \newcommand{\cross}{\times}
+
+\newcommand{\grad}{\nabla}
+
+\newcommand{\del}{\partial}
+\newcommand{\pdf}[2][]{\frac{\del^{#1}}{\del{}^{#1} #2}}
+\newcommand{\odf}[2][]{\frac{d^{#1}}{d^{#1} #2}}
+
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\codom}{codom}
+
