@@ -88,12 +88,22 @@
 \newcommand{\sT}{\mathcal{T}}
 \newcommand{\sU}{\mathcal{U}}
 
-\renewcommand{\Re}{\mathfrak{Re}}
-\renewcommand{\Im}{\mathfrak{Im}}
+\let\Re\relax
+\let\Im\relax
+\DeclareMathOperator{\Re}{Re}
+\DeclareMathOperator{\Im}{Im}
 
 \newcommand{\cont}{\mathfrak{c}}
 
-\newcommand{\bk}{\bm{\kappa}}
+% https://tex.stackexchange.com/questions/14071/how-can-i-increase-the-line-spacing-in-a-matrix
+\makeatletter
+\renewcommand*\env@matrix[1][\arraystretch]{%
+  \edef\arraystretch{#1}%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{*\c@MaxMatrixCols c}}
+\makeatother
+
 
 % Paired stuff, starred is auto-sized
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
@@ -116,13 +126,22 @@
 %\newcommand{\legendre}[2]{\parens*{\dfrac{#1}{#2}}}
 %\newcommand{\p}{$p$\nobreakdash}
 
+\newcommand{\vlit}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+
 % Calc 3
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
 \DeclarePairedDelimiter{\veclit}{\langle}{\rangle}
 \renewcommand{\vec}[1]{\vv{#1}}
 \newcommand{\cross}{\times}
 
+\newcommand{\ihat}{\bm{\hat{\imath}}}
+\newcommand{\jhat}{\bm{\hat{\jmath}}}
+\newcommand{\khat}{\bm{\hat{k}}}
+
 \newcommand{\grad}{\nabla}
+
+\newcommand{\dx}[1]{\,d#1}
+\newcommand{\idx}[1]{d#1} % inline version
 
 \newcommand{\del}{\partial}
 \newcommand{\pdf}[2][]{\frac{\del^{#1}}{\del{}^{#1} #2}}
@@ -132,3 +151,4 @@
 \DeclareMathOperator{\rng}{rng}
 \DeclareMathOperator{\codom}{codom}
 
+\DeclareMathOperator{\std}{std}
