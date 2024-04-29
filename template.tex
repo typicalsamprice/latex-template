@@ -3,7 +3,7 @@
 \usepackage{amsthm}
 \usepackage{xfrac}
 
-\usepackage[most]{tcolorbox}
+\usepackage[framemethod=TikZ]{mdframed}
 
 \usepackage{esvect}
 
@@ -11,6 +11,10 @@
 \usepackage[utf8]{inputenc}
 
 \usepackage[margin=0.75in]{geometry}
+
+\ifx\boxedthm\undefined%
+  \let\boxedthm0
+\fi
 
 \ifx\boldproof\undefined%
   \let\boldproof0
