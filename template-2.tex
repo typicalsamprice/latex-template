@@ -1,0 +1,54 @@
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{xfrac}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage[margin=0.75in]{geometry}
+
+\ifx\boldproof\undefined%
+  \let\boldproof0
+\fi
+
+\if\boldproof1
+  % Make the word "proof" match font for Theorem, etc.
+  \expandafter\let\expandafter\oldproof\csname\string\proof\endcsname
+  \let\oldendproof\endproof%
+  \renewenvironment{proof}[1][\proofname]{%
+    \oldproof[\bfseries \upshape #1]%
+  }{\oldendproof}
+\fi
+
+%\usepackage{minted} % Programming typesetting, can cause many issues
+
+% Font choice
+%\usepackage{mathpazo}
+\usepackage{libertine}
+
+\usepackage{bm}
+% References
+\usepackage{nameref}
+
+\DeclarePairedDelimiter{\parens}{\lparen}{\rparen}
+\DeclarePairedDelimiter{\braces}{\lbrace}{\rbrace}
+\DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}% Aliased because it's nice like that
+\DeclarePairedDelimiter{\bracks}{\lbrack}{\rbrack}
+\DeclarePairedDelimiter{\angles}{\langle}{\rangle}
+\DeclarePairedDelimiter{\vec}{\langle}{\rangle}% Aliased, naturally
+
+\newcommand{\grad}{\nabla}
+\newcommand{\del}{\partial}
+
+\newcommand{\fk}{\mathfrak}
+
+\DeclareMathOperator{\curl}{curl}
+\let\div\relax% We don't ever need this anyways
+\DeclareMathOperator{\div}{div}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}
