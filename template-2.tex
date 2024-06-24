@@ -36,7 +36,8 @@
 \DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}% Aliased because it's nice like that
 \DeclarePairedDelimiter{\bracks}{\lbrack}{\rbrack}
 \DeclarePairedDelimiter{\angles}{\langle}{\rangle}
-\DeclarePairedDelimiter{\vec}{\langle}{\rangle}% Aliased, naturally
+\DeclarePairedDelimiter{\vecl}{\langle}{\rangle}% Aliased, naturally
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}% Aliased, naturally
 
 \newcommand{\grad}{\nabla}
 \newcommand{\del}{\partial}
@@ -52,3 +53,13 @@
 \newtheorem{prop}[theorem]{Proposition}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{definition}[theorem]{Definition}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\renewcommand{\vec}[1]{\bm{#1}}
+
+\DeclareMathOperator{\res}{res}
