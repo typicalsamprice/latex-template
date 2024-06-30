@@ -1,159 +1,49 @@
+\usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}
+
 \usepackage{mathtools}
-\usepackage{amssymb}
-\usepackage{amsthm}
-\usepackage{xfrac}
-
-\usepackage[framemethod=TikZ]{mdframed}
-
-\usepackage{esvect}
-
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-
-\usepackage[margin=0.75in]{geometry}
-
-\ifx\boxedthm\undefined%
-  \let\boxedthm0
-\fi
-
-\ifx\boldproof\undefined%
-  \let\boldproof0
-\fi
-
-\if\boldproof1
-  % Make the word "proof" match font for Theorem, etc.
-  \expandafter\let\expandafter\oldproof\csname\string\proof\endcsname
-  \let\oldendproof\endproof%
-  \renewenvironment{proof}[1][\proofname]{%
-    \oldproof[\bfseries \upshape #1]%
-  }{\oldendproof}
-\fi
-
-%\usepackage{minted} % Programming typesetting, can cause many issues
-
-% Font choice
-%\usepackage{mathpazo}
-\usepackage{libertine}
-
+\usepackage{amsthm,amssymb}
+\usepackage{xcolor}
+\usepackage{xparse}
 \usepackage{bm}
-% References
-\usepackage{nameref}
+\usepackage{etoolbox}
 
+% SOURCES:
+% [SM]: https://github.com/SeniorMars/dotfiles/blob/master/latex_template
+
+% This toggle is IMPORTANT! Use to toggle if printing or not (prettier with color for non-printing purposes)
+\newtoggle{paper}
+
+\input{letterfonts}
+
+\newcommand{\defeq}{\overset{\mathrm{def}}{=}} % [SM]
 \newcommand{\inv}{^{-1}}
-\newcommand{\transpose}{^{T}}
-\newcommand{\conj}[1]{\mathop{\overline{#1}}}
-\newcommand{\comp}[1]{{#1}^{\complement}}
 
-\newcommand{\ds}{\displaystyle}
+\DeclareMathSymbol{:}{\mathpunct}{operators}{"3A} % Make ':' act like \colon
+\newcommand{\ldot}{\mathrel{.}}
+\newcommand{\surjto}{\twoheadrightarrow}
+\newcommand{\injto}{\hookrightarrow}
+\newcommand{\iso}{\cong}
 
-% Theorems
-\theoremstyle{definition}
-\newtheorem{theorem}{Theorem}
-\newtheorem{lem}[theorem]{Lemma}
-\newtheorem{prop}[theorem]{Proposition}
-\newtheorem{defn}[theorem]{Definition}
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{ex}{Example}
-
-\newcommand{\sol}{\textbf{Solution}:}
-
-% Greek symbols
-\newcommand{\veps}{\epsilon}
-\newcommand{\eps}{\varepsilon} % I like this more :)
-
-% Set-related stuff
-\DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
-\newcommand{\powerset}{\mathcal{P}}
-\newcommand{\union}{\cup}
-\newcommand{\intersect}{\cap}
-\newcommand{\symdiff}{\operatorname{\vartriangle}}
-
-\DeclareMathOperator{\Int}{Int}
-\DeclareMathOperator{\Ext}{Ext}
-
-% Important sets/letters
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\F}{\mathbb{F}}
-
-\newcommand{\sA}{\mathcal{A}}
-\newcommand{\sC}{\mathcal{C}}
-\newcommand{\sF}{\mathcal{F}}
-\newcommand{\sI}{\mathcal{I}}
-\newcommand{\sJ}{\mathcal{J}}
-\newcommand{\sK}{\mathcal{K}}
-\newcommand{\sS}{\mathcal{S}}
-\newcommand{\sT}{\mathcal{T}}
-\newcommand{\sU}{\mathcal{U}}
-
-\let\Re\relax
-\let\Im\relax
-\DeclareMathOperator{\Re}{Re}
-\DeclareMathOperator{\Im}{Im}
-
-\newcommand{\cont}{\mathfrak{c}}
-
-% https://tex.stackexchange.com/questions/14071/how-can-i-increase-the-line-spacing-in-a-matrix
-\makeatletter
-\renewcommand*\env@matrix[1][\arraystretch]{%
-  \edef\arraystretch{#1}%
-  \hskip -\arraycolsep
-  \let\@ifnextchar\new@ifnextchar
-  \array{*\c@MaxMatrixCols c}}
-\makeatother
-
-
-% Paired stuff, starred is auto-sized
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
-\DeclarePairedDelimiter{\innerprod}{\langle}{\rangle}
-\DeclarePairedDelimiter{\parens}{\lparen}{\rparen}
-\DeclarePairedDelimiter{\braces}{\lbrace}{\rbrace}
-\DeclarePairedDelimiter{\bracks}{\lbrack}{\rbrack}
-\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
-\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
-
-% Logic symbols
-\newcommand{\lthen}{\rightarrow}
-\newcommand{\liff}{\leftrightarrow}
-\newcommand{\lxor}{\nleftrightarrow}
-
-% f \from \N \to \N
-\newcommand{\from}{\colon}
-
-% Numba theory
-%\newcommand{\legendre}[2]{\parens*{\dfrac{#1}{#2}}}
-%\newcommand{\p}{$p$\nobreakdash}
-
-\newcommand{\vlit}[1]{\begin{pmatrix} #1 \end{pmatrix}}
-
-% Calc 3
-\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
-\DeclarePairedDelimiter{\veclit}{\langle}{\rangle}
-\renewcommand{\vec}[1]{\vv{#1}}
-\newcommand{\cross}{\times}
-\DeclareMathOperator{\curl}{curl}
-\let\div\relax%
-\DeclareMathOperator{\div}{div}
-
-\newcommand{\ihat}{\bm{\hat{\imath}}}
-\newcommand{\jhat}{\bm{\hat{\jmath}}}
-\newcommand{\khat}{\bm{\hat{k}}}
-
+\newcommand{\eps}{\varepsilon}
+\newcommand{\sig}{\sigma}
 \newcommand{\grad}{\nabla}
 
-\newcommand{\dx}[1]{\,d#1}
-\newcommand{\idx}[1]{d#1} % inline version
+\newcommand{\odf}[2]{\frac{d #1}{d #2}}
+\newcommand{\pdf}[2]{\frac{\partial #1}{\partial #2}}
 
-\newcommand{\del}{\partial}
-\newcommand{\pdf}[2][]{\frac{\del^{#1}}{\del{}^{#1} #2}}
-\newcommand{\odf}[2][]{\frac{d^{#1}}{d^{#1} #2}}
+\renewcommand{\vec}[1]{\bm{#1}} % We don't like the arrows as much
 
-\DeclareMathOperator{\dom}{dom}
-\DeclareMathOperator{\rng}{rng}
-\DeclareMathOperator{\codom}{codom}
+% Block from [SM]
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\res}{res} % Resultant
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
 
-\DeclareMathOperator{\std}{std}
-\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\char}{char}
+
+\DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+\DeclarePairedDelimiter{\pars}{\lparen}{\rparen}
+\DeclarePairedDelimiter{\braces}{\lbrace}{\rbrace}
+\DeclarePairedDelimiter{\bracks}{\lbrack}{\rbrack}
