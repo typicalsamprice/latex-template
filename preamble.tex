@@ -1,0 +1,119 @@
+% Most taken from: https://github.com/SeniorMars/dotfiles/blob/main/latex_template/preamble.tex
+\usepackage{geometry}
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+
+% Use the command \doublespacing if needed
+\usepackage{setspace}
+
+\geometry{a4paper, margin=1in}
+
+\usepackage{mathtools}
+\usepackage{amssymb,amsfonts,amsthm}
+\usepackage{bm}
+
+\usepackage{xfrac}
+\usepackage[makeroom]{cancel}
+
+% Use \begin{enumerate}[start=x,label={Q\arabic*)}] for example
+\usepackage{enumitem}
+
+\usepackage{xcolor}
+
+\usepackage{nameref}
+
+% Important options
+% in envs, use options like [baseline=x] to center on row x (or special opts t/[c]/b without 'baseline')
+\usepackage{nicematrix}
+\NiceMatrixOptions{cell-space-limits = 1pt}
+
+\usepackage{booktabs}
+
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{tikzsymbols}
+
+\usepackage{pdfpages}
+
+\setlength{\parindent}{1cm}
+
+\DeclarePairedDelimiter{\pars}{\lparen}{\rparen}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\bracks}{\lbrack}{\rbrack}
+\DeclarePairedDelimiter{\angles}{\langle}{\rangle}
+\DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\let\class\bracks% % Equivalence class redef
+
+
+% Special Groups
+\DeclareMathOperator{\Fr}{Fr} % Frame, Math 464
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Orth}{O}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\Dih}{Dih}
+
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Support}{Support}
+
+\DeclareMathOperator{\tr}{tr}
+
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\lcm}{lcm}
+
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Bd}{Bd}
+
+\DeclareMathOperator{\D}{D\!}% Multidim derivative
+
+\DeclareMathOperator{\cis}{cis}
+
+\newcommand{\from}{\colon}
+\newcommand{\injto}{\hookrightarrow}
+\newcommand{\surjto}{\twoheadrightarrow}
+\newcommand{\normalto}{\triangleleft}
+\newcommand{\iso}{\simeq}
+\newcommand{\isoto}{\xrightarrow{\sim}}
+
+\renewcommand{\vec}[1]{\bm{#1}}
+
+\newcommand{\RR}[1][]{\mathbb{R}^{#1}}
+\newcommand{\ZZ}[1][]{\mathbb{Z}^{#1}}
+\newcommand{\CC}[1][]{\mathbb{C}^{#1}}
+\newcommand{\QQ}[1][]{\mathbb{Q}^{#1}}
+\newcommand{\PP}[1][]{\mathbb{P}^{#1}}
+\newcommand{\NN}[1][]{\mathbb{N}^{#1}}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\newcommand{\ol}{\overline}
+
+\newcommand{\id}[1][]{\mathrm{id}_{#1}}
+
+\newcommand{\inv}{^{-1}}
+
+\let\epsilon\varepsilon%
+\newcommand{\eps}{\epsilon}
+
+\input{theoremboxes}
+
+\usepackage{changepage}
+\newenvironment{remark}{\begin{adjustwidth}{1cm}{}\textbf{\underline{Remark}}.}{\end{adjustwidth}}

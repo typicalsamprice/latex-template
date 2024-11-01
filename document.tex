@@ -1,0 +1,51 @@
+% -*- compile-command: "latexmk -pdf document.tex" -*-
+\documentclass{article}
+
+\author{Sam Price}
+\title{Example Assignment}
+
+\newif\ifprinted%
+%\printedtrue%
+\input{preamble}
+
+\begin{document}
+
+\maketitle
+
+\begin{theorem}{Heine-Borel}{hb}
+  For $X \subseteq \RR[n]$, $X$ is compact if and only if $X$ is closed and bounded.
+\end{theorem}
+
+\begin{proof}
+  Omitted. Use the fact $\id|_{X} = \id[X]$
+\end{proof}
+
+\begin{lemma}{Heine-Borel}{hb}
+  For $X \subseteq \RR[n]$, $X$ is compact if and only if $X$ is closed and bounded.
+\end{lemma}
+
+\begin{corollary}{}{}
+  Any countable union of compact sets $X_{i} \subset \RR[n]$ is also compact.
+\end{corollary}
+
+\begin{proposition}{First Isomorphism Theorem}{}
+  If $f \from G \surjto G'$, then
+  \begin{itemize}
+    \item $\ker f \normalto G$.
+    \item $H \iso G / \ker f$.
+    \item $\im f \le H$.
+  \end{itemize}
+\end{proposition}
+\begin{example}{Big Example}{}
+  Words
+\end{example}
+
+\begin{question}{}{}
+  What is the square root of 3?
+\end{question}
+
+\begin{definition}{Normed Vector Space}{}
+  Let $\vec{x} \in V$.
+\end{definition}
+
+\end{document}

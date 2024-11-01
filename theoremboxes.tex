@@ -1,0 +1,142 @@
+%%%%%%%%%%%%%%%%%%%%%
+%%% THEOREM BOXES %%%
+%%%%%%%%%%%%%%%%%%%%%
+\usepackage[most,many,breakable]{tcolorbox}
+\tcbuselibrary{theorems,skins,hooks}
+
+% Stolen from: https://tex.stackexchange.com/a/330460
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[%
+    \hskip\labelsep
+    \normalfont\bfseries % was \itshape
+    #1%
+    \@addpunct{.}% remove this if you don't want punctuation
+  ]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\let\qed\relax % avoid a warning
+\DeclareRobustCommand{\qed}{%
+  \ifmmode \mathqed
+  \else
+    \leavevmode\unskip\penalty\@M\hbox{}\nobreak\hspace{.5em minus .1em}% was \hfill
+    \hbox{\qedsymbol}%
+  \fi
+}
+\makeatother
+
+\ifprinted%
+  \colorlet{thmbgcol}{white}
+  \colorlet{lembgcol}{white}
+  \colorlet{corbgcol}{white}
+  \colorlet{propbgcol}{white}
+  \colorlet{exbgcol}{white}
+  \colorlet{defbgcol}{white}
+
+  \colorlet{qheadcol}{black!20!white}
+  \colorlet{qheadtxtcol}{black!90}
+
+  \colorlet{exhlcol}{black}
+  \colorlet{prophlcol}{black}
+  \colorlet{corhlcol}{black}
+  \colorlet{thmhlcol}{black}
+  \colorlet{lemhlcol}{black}
+  \colorlet{defhlcol}{black}
+\else
+  \definecolor{thmbgcol}{HTML}{aec1f9}
+  \definecolor{corbgcol}{HTML}{b599f7}
+  \definecolor{propbgcol}{HTML}{c9f7aa}
+  \definecolor{exbgcol}{HTML}{f7c479}
+  \colorlet{defbgcol}{red!7}
+
+  \definecolor{qheadcol}{HTML}{182959}
+  \colorlet{qheadtxtcol}{white}
+
+  \definecolor{exhlcol}{HTML}{604419}
+  \definecolor{prophlcol}{HTML}{1e631a}
+  \definecolor{corhlcol}{HTML}{2d1760}
+  \definecolor{thmhlcol}{HTML}{142c72}
+  \colorlet{defhlcol}{red!50!black}
+
+  \definecolor{lembgcol}{HTML}{e998f2}
+  \definecolor{lemhlcol}{HTML}{791684}
+\fi
+
+\newtcbtheorem[number within = section]{theorem}{Theorem}{
+  enhanced, breakable, colback = thmbgcol!20,
+  frame hidden, boxrule = 0sp, borderline west = {2pt}{0pt}{thmhlcol},
+  sharp corners, detach title, before upper = \tcbtitle\par\smallskip,
+  coltitle = thmhlcol, fonttitle = \bfseries,
+  description font = \mdseries, separator sign none, segmentation style = {solid, thmhlcol}
+}{th}
+
+\newtcbtheorem[number within = section]{lemma}{Lemma}{
+  enhanced, breakable, colback = lembgcol!20,
+  frame hidden, boxrule = 0sp, borderline west = {2pt}{0pt}{lemhlcol},
+  sharp corners, detach title, before upper = \tcbtitle\par\smallskip,
+  coltitle = lemhlcol, fonttitle = \bfseries,
+  description font = \mdseries, separator sign none, segmentation style = {solid, lemhlcol}
+}{lem}
+
+\newtcbtheorem[number within = section]{corollary}{Corollary}{
+  enhanced, breakable, colback = corbgcol!20,
+  frame hidden, boxrule = 0sp, borderline west = {2pt}{0pt}{corhlcol},
+  sharp corners, detach title, before upper = \tcbtitle\par\smallskip,
+  coltitle = corhlcol, fonttitle = \bfseries,
+  description font = \mdseries, separator sign none, segmentation style = {solid, corhlcol}
+}{cor}
+
+\newtcbtheorem[number within = section]{proposition}{Proposition}{
+  enhanced, breakable, colback = propbgcol!25,
+  frame hidden, boxrule = 0sp, borderline west = {2pt}{0pt}{prophlcol},
+  sharp corners, detach title, before upper = \tcbtitle\par\smallskip,
+  coltitle = prophlcol, fonttitle = \bfseries,
+  description font = \mdseries, separator sign none, segmentation style = {solid, prophlcol}
+}{prop}
+
+\newtcbtheorem[number within = section]{example}{Example}{
+  enhanced, breakable, colback = exbgcol!20,
+  frame hidden, boxrule = 0sp, borderline west = {2pt}{0pt}{exhlcol},
+  sharp corners, detach title, before upper = \tcbtitle\par\smallskip,
+  coltitle = exhlcol, fonttitle = \bfseries,
+  description font = \mdseries, separator sign none, segmentation style = {solid, exhlcol}
+}{prop}
+
+\newtcbtheorem[number within = section]{definition}{Definition}{
+  enhanced, breakable, colback = defbgcol,
+  frame hidden, boxrule = 0sp, borderline west = {2pt}{0pt}{defhlcol},
+  sharp corners, detach title, before upper = \tcbtitle\par\smallskip,
+  coltitle = defhlcol, fonttitle = \bfseries,
+  description font = \mdseries, separator sign none, segmentation style = {solid, exhlcol}
+}{def}
+
+\makeatletter
+\newtcbtheorem{question}{Question}{enhanced,
+    breakable,
+    colback=white,
+    colframe=qheadcol,
+    attach boxed title to top left={yshift*=-\tcboxedtitleheight},
+    fonttitle=\bfseries,
+    coltitle=qheadtxtcol,
+    title={#2},
+    boxed title size=title,
+    boxed title style={%
+            sharp corners,
+            rounded corners=northwest,
+            colback=qheadcol,
+            boxrule=0pt,
+        },
+    underlay boxed title={%
+            \path[fill=tcbcolframe] (title.south west)--(title.south east)
+            to[out=0, in=180] ([xshift=5mm]title.east)--
+            (title.center-|frame.east)
+            [rounded corners=\kvtcb@arc] |-
+            (frame.north) -| cycle;
+        },
+    #1
+}{}
+\makeatother
